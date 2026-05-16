@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A. — About</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Syne+Mono&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+body { background: var(--off-white); }
+
+/* PAGE HEADER HERO */
+.page-hero {
+  min-height: 45vh;
+  background: var(--black);
+  display: flex;
+  align-items: flex-end;
+  padding: 0 80px 64px;
+  position: relative;
+  overflow: hidden;
+}
+
+.page-hero-label {
+  font-family: 'Syne Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  color: var(--yellow);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.page-hero-title {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: clamp(3.5rem, 8vw, 7rem);
+  letter-spacing: -0.04em;
+  line-height: 1.0;
+  color: var(--white);
+}
+
+.page-hero-poly {
+  position: absolute;
+  right: -5%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40%;
+  opacity: 0.1;
+  pointer-events: none;
+}
+
+/* ABOUT SECTION */
+.s-about {
+  background: var(--off-white);
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  overflow: hidden;
+}
+
+.about-left {
+  padding: 120px 64px 80px 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+}
+
+.about-h2 {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: clamp(3rem, 6vw, 5.5rem);
+  letter-spacing: -0.04em;
+  line-height: 1.0;
+  color: var(--black);
+  margin-bottom: 2.5rem;
+}
+
+.about-h2 .thin { font-weight: 300; }
+
+.about-p {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.85;
+  margin-bottom: 1.25rem;
+  max-width: 480px;
+}
+
+.about-right {
+  position: relative;
+  overflow: hidden;
+  min-height: 600px;
+}
+
+.about-photo-placeholder {
+  width: 100%;
+  height: 100%;
+  background: #c8c8c0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
+  color: #888;
+  position: absolute;
+  inset: 0;
+}
+
+.about-photo-placeholder svg {
+  width: 80px;
+  height: 80px;
+  opacity: 0.4;
+}
+
+/* FACTS STRIP */
+.facts-strip {
+  background: var(--black);
+  padding: 80px 80px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+}
+
+.fact-card {
+  background: #111;
+  border: 1px solid var(--border);
+  padding: 3rem 2.5rem;
+  transition: background 0.3s, border-color 0.3s;
+}
+
+.fact-card:hover { background: #161616; border-color: var(--yellow); }
+
+.fact-num {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: clamp(2.5rem, 4vw, 4rem);
+  letter-spacing: -0.04em;
+  color: var(--yellow);
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.fact-label {
+  font-size: 0.85rem;
+  color: var(--gray);
+  line-height: 1.6;
+}
+
+@media (max-width: 1024px) {
+  .page-hero { padding: 0 40px 50px; }
+  .s-about { grid-template-columns: 1fr; }
+  .about-right { min-height: 50vw; max-height: 600px; }
+  .about-left { padding: 80px 40px 60px; }
+  .facts-strip { padding: 60px 40px; grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+  .page-hero { padding: 0 24px 40px; }
+  .about-left { padding: 60px 24px 50px; }
+  .facts-strip { padding: 60px 24px; grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- CURSOR -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursor-ring"></div>
+
+<!-- SIDE STRIPE -->
+<div class="side-stripe"></div>
+
+<!-- SIDE LABEL -->
+<div class="side-label" id="sideLabel">ABOUT</div>
+
+<!-- BACK TO TOP -->
+<div class="back-top" id="backTop">
+  <button class="back-top-btn" onclick="scrollToTop()">↑</button>
+  <span class="back-top-text">BACK TO TOP</span>
+</div>
+
+<!-- FULLSCREEN MENU -->
+<div class="fullscreen-menu" id="fullMenu">
+  <ul class="menu-nav">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html" class="active">About</a></li>
+    <li><a href="skills.html">Skills</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="menu-social">
+    <a href="#">Instagram</a>
+    <a href="#">LinkedIn</a>
+    <a href="#">GitHub</a>
+    <a href="#">Dribbble</a>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a href="index.html" class="nav-logo" id="navLogo">A.</a>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <svg class="page-hero-poly" viewBox="0 0 500 500" fill="none">
+    <polygon points="250,20 430,100 470,280 370,430 130,430 30,280 70,100" fill="none" stroke="white" stroke-width="1.2"/>
+    <polygon points="250,80 390,145 420,280 330,390 170,390 80,280 110,145" fill="none" stroke="white" stroke-width="0.8"/>
+  </svg>
+  <div>
+    <span class="page-hero-label">// Who I Am</span>
+    <h1 class="page-hero-title">About<br>Me.</h1>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="s-about" data-theme="light">
+  <div class="about-left">
+    <h2 class="about-h2 reveal">
+      Who<br>
+      <span class="thin">Is </span>Arya?
+    </h2>
+    <p class="about-p reveal" style="transition-delay:0.1s">
+      I am a UI/UX Designer and Frontend Developer passionate about collaborating with others to bring innovative ideas to life. My expertise in design systems, interaction design, and web development allows me to contribute effectively to dynamic teams.
+    </p>
+    <p class="about-p reveal" style="transition-delay:0.2s">
+      I believe that collaborative environments foster creativity and lead to extraordinary results. By working together and sharing knowledge, we can build solutions that have a lasting impact.
+    </p>
+    <p class="about-p reveal" style="transition-delay:0.25s">
+      Based in Jakarta, Indonesia — working with clients across Southeast Asia and beyond.
+    </p>
+    <br>
+    <a href="contact.html" class="btn-pill reveal" style="transition-delay:0.3s;background:#111;color:#fff;display:inline-flex">
+      GET IN TOUCH
+      <span class="arrow-circle" style="background:#f0a500;color:#000">→</span>
+    </a>
+  </div>
+  <div class="about-right">
+    <div class="about-photo-placeholder">
+      <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="40" cy="28" r="16" stroke="#888" stroke-width="2"/>
+        <path d="M10 72c0-16.6 13.4-30 30-30s30 13.4 30 30" stroke="#888" stroke-width="2"/>
+      </svg>
+      <span style="font-family:'Syne Mono',monospace;font-size:0.7rem;letter-spacing:0.1em">YOUR PHOTO HERE</span>
+    </div>
+  </div>
+</section>
+
+<!-- FACTS -->
+<section class="facts-strip" data-theme="dark">
+  <div class="fact-card reveal">
+    <span class="fact-num">5+</span>
+    <p class="fact-label">Years of professional experience in design and development</p>
+  </div>
+  <div class="fact-card reveal" style="transition-delay:0.1s">
+    <span class="fact-num">32+</span>
+    <p class="fact-label">Projects completed across fintech, edtech, healthtech, and e-commerce</p>
+  </div>
+  <div class="fact-card reveal" style="transition-delay:0.2s">
+    <span class="fact-num">18+</span>
+    <p class="fact-label">Satisfied clients from Indonesia and Southeast Asia</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background:var(--black)">
+  <p>© 2025 Arya Pratama</p>
+  <p>UI/UX Designer & Frontend Developer</p>
+  <a href="index.html">← Back to Home</a>
+</footer>
+
+<script>
+const cursor = document.getElementById('cursor');
+const ring = document.getElementById('cursor-ring');
+let mx = 0, my = 0, rx = 0, ry = 0;
+
+document.addEventListener('mousemove', e => {
+  mx = e.clientX; my = e.clientY;
+  cursor.style.left = mx + 'px';
+  cursor.style.top = my + 'px';
+});
+
+function animateRing() {
+  rx += (mx - rx) * 0.12;
+  ry += (my - ry) * 0.12;
+  ring.style.left = rx + 'px';
+  ring.style.top = ry + 'px';
+  requestAnimationFrame(animateRing);
+}
+animateRing();
+
+document.querySelectorAll('a, button, .fact-card').forEach(el => {
+  el.addEventListener('mouseenter', () => {
+    cursor.style.width = '18px'; cursor.style.height = '18px';
+    ring.style.width = '52px'; ring.style.height = '52px';
+    ring.style.borderColor = 'rgba(240,165,0,0.8)';
+  });
+  el.addEventListener('mouseleave', () => {
+    cursor.style.width = '10px'; cursor.style.height = '10px';
+    ring.style.width = '36px'; ring.style.height = '36px';
+    ring.style.borderColor = 'rgba(240,165,0,0.5)';
+  });
+});
+
+// Nav dark on light bg
+const navLogo = document.getElementById('navLogo');
+const hamburgerBtn = document.getElementById('hamburger');
+const aboutSection = document.querySelector('[data-theme="light"]');
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navLogo.classList.add('dark');
+      hamburgerBtn.classList.add('dark');
+    } else {
+      navLogo.classList.remove('dark');
+      hamburgerBtn.classList.remove('dark');
+    }
+  });
+}, { threshold: 0.3 });
+if (aboutSection) obs.observe(aboutSection);
+
+let menuOpen = false;
+function toggleMenu() {
+  menuOpen = !menuOpen;
+  document.getElementById('fullMenu').classList.toggle('open', menuOpen);
+  hamburgerBtn.classList.toggle('open', menuOpen);
+}
+
+const backTop = document.getElementById('backTop');
+window.addEventListener('scroll', () => {
+  backTop.classList.toggle('visible', window.scrollY > 400);
+});
+function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
+
+const revealObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+</script>
+</body>
+</html>

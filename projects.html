@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A. — Projects</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Syne+Mono&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+/* PAGE HERO */
+.page-hero {
+  min-height: 45vh;
+  background: var(--black);
+  display: flex;
+  align-items: flex-end;
+  padding: 0 80px 64px;
+  position: relative;
+  overflow: hidden;
+}
+
+.page-hero-label {
+  font-family: 'Syne Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  color: var(--yellow);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.page-hero-title {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: clamp(3.5rem, 8vw, 7rem);
+  letter-spacing: -0.04em;
+  line-height: 1.0;
+  color: var(--white);
+}
+
+.page-hero-poly {
+  position: absolute;
+  right: -5%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40%;
+  opacity: 0.1;
+  pointer-events: none;
+}
+
+/* PROJECTS */
+.s-projects {
+  background: var(--black);
+  padding: 100px 80px;
+}
+
+.projects-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 4rem;
+}
+
+.project-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border-top: 1px solid var(--border);
+}
+
+.project-row {
+  display: grid;
+  grid-template-columns: 60px 1fr auto auto;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem 0;
+  border-bottom: 1px solid var(--border);
+  cursor: none;
+  transition: padding-left 0.3s;
+}
+
+.project-row:hover { padding-left: 16px; }
+.project-row:hover .proj-num { color: var(--yellow); }
+.project-row:hover .proj-title { color: var(--yellow); }
+.project-row:hover .proj-arrow { opacity: 1; color: var(--yellow); transform: translateX(0); }
+
+.proj-num {
+  font-family: 'Syne Mono', monospace;
+  font-size: 0.7rem;
+  color: #444;
+  transition: color 0.3s;
+}
+
+.proj-title {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+  color: var(--white);
+  letter-spacing: -0.02em;
+  transition: color 0.3s;
+}
+
+.proj-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.proj-tag {
+  font-family: 'Syne Mono', monospace;
+  font-size: 0.65rem;
+  color: var(--gray);
+  border: 1px solid #2a2a2a;
+  padding: 4px 10px;
+  border-radius: 100px;
+  letter-spacing: 0.05em;
+}
+
+.proj-arrow {
+  font-size: 1.2rem;
+  color: #333;
+  opacity: 0.5;
+  transform: translateX(-8px);
+  transition: all 0.3s;
+}
+
+/* CATEGORIES */
+.s-categories {
+  background: var(--off-white);
+  padding: 100px 80px;
+}
+
+.cat-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-top: 4rem;
+}
+
+.cat-card {
+  background: var(--white);
+  border: 1px solid rgba(0,0,0,0.08);
+  padding: 2.5rem 2rem;
+  transition: background 0.3s, transform 0.3s;
+  cursor: none;
+}
+
+.cat-card:hover { background: var(--yellow); transform: translateY(-4px); }
+.cat-card:hover .cat-name { color: var(--black); }
+.cat-card:hover .cat-count { color: rgba(0,0,0,0.5); }
+
+.cat-icon {
+  font-size: 1.8rem;
+  margin-bottom: 1.25rem;
+  display: block;
+}
+
+.cat-name {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--black);
+  margin-bottom: 0.4rem;
+  transition: color 0.3s;
+}
+
+.cat-count {
+  font-family: 'Syne Mono', monospace;
+  font-size: 0.7rem;
+  color: #999;
+  letter-spacing: 0.08em;
+  transition: color 0.3s;
+}
+
+@media (max-width: 1024px) {
+  .page-hero { padding: 0 40px 50px; }
+  .s-projects { padding: 80px 40px; }
+  .s-categories { padding: 80px 40px; }
+  .cat-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+  .page-hero { padding: 0 24px 40px; }
+  .s-projects { padding: 60px 24px; }
+  .project-row { grid-template-columns: 40px 1fr auto; }
+  .proj-tags { display: none; }
+  .s-categories { padding: 60px 24px; }
+  .cat-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 480px) {
+  .projects-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+  .cat-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- CURSOR -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursor-ring"></div>
+
+<!-- SIDE STRIPE -->
+<div class="side-stripe"></div>
+
+<!-- SIDE LABEL -->
+<div class="side-label" id="sideLabel">PROJECTS</div>
+
+<!-- BACK TO TOP -->
+<div class="back-top" id="backTop">
+  <button class="back-top-btn" onclick="scrollToTop()">↑</button>
+  <span class="back-top-text">BACK TO TOP</span>
+</div>
+
+<!-- FULLSCREEN MENU -->
+<div class="fullscreen-menu" id="fullMenu">
+  <ul class="menu-nav">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="skills.html">Skills</a></li>
+    <li><a href="projects.html" class="active">Projects</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="menu-social">
+    <a href="#">Instagram</a>
+    <a href="#">LinkedIn</a>
+    <a href="#">GitHub</a>
+    <a href="#">Dribbble</a>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a href="index.html" class="nav-logo" id="navLogo">A.</a>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <svg class="page-hero-poly" viewBox="0 0 500 500" fill="none">
+    <polygon points="250,20 430,100 470,280 370,430 130,430 30,280 70,100" fill="none" stroke="white" stroke-width="1.2"/>
+    <polygon points="250,80 390,145 420,280 330,390 170,390 80,280 110,145" fill="none" stroke="white" stroke-width="0.8"/>
+  </svg>
+  <div>
+    <span class="page-hero-label">// My Projects So Far</span>
+    <h1 class="page-hero-title">Selected<br>Works.</h1>
+  </div>
+</div>
+
+<!-- PROJECTS LIST -->
+<section class="s-projects" data-theme="dark">
+  <div class="projects-header reveal">
+    <div>
+      <span class="s-tag" style="color:rgba(240,165,0,0.7)">// 32 projects completed</span>
+      <h2 class="s-title" style="color:var(--white)">All<br>Projects</h2>
+    </div>
+    <a href="contact.html" class="btn-text-arrow" style="color:#666">
+      HIRE ME
+      <span class="arr-box">→</span>
+    </a>
+  </div>
+
+  <div class="project-list reveal" style="transition-delay:0.1s">
+    <div class="project-row">
+      <span class="proj-num">01</span>
+      <span class="proj-title">Fintrack — Financial Dashboard</span>
+      <div class="proj-tags">
+        <span class="proj-tag">UI/UX</span>
+        <span class="proj-tag">React</span>
+        <span class="proj-tag">SaaS</span>
+      </div>
+      <span class="proj-arrow">↗</span>
+    </div>
+    <div class="project-row">
+      <span class="proj-num">02</span>
+      <span class="proj-title">Teman Belajar — EdTech Mobile App</span>
+      <div class="proj-tags">
+        <span class="proj-tag">Mobile</span>
+        <span class="proj-tag">Figma</span>
+        <span class="proj-tag">Education</span>
+      </div>
+      <span class="proj-arrow">↗</span>
+    </div>
+    <div class="project-row">
+      <span class="proj-num">03</span>
+      <span class="proj-title">Nusantara — Design System</span>
+      <div class="proj-tags">
+        <span class="proj-tag">System</span>
+        <span class="proj-tag">Next.js</span>
+        <span class="proj-tag">120+ Components</span>
+      </div>
+      <span class="proj-arrow">↗</span>
+    </div>
+    <div class="project-row">
+      <span class="proj-num">04</span>
+      <span class="proj-title">Kairos — B2B Landing Page</span>
+      <div class="proj-tags">
+        <span class="proj-tag">Landing</span>
+        <span class="proj-tag">TypeScript</span>
+        <span class="proj-tag">Conversion</span>
+      </div>
+      <span class="proj-arrow">↗</span>
+    </div>
+    <div class="project-row">
+      <span class="proj-num">05</span>
+      <span class="proj-title">Rekam — Health Tracking App</span>
+      <div class="proj-tags">
+        <span class="proj-tag">HealthTech</span>
+        <span class="proj-tag">React Native</span>
+        <span class="proj-tag">UI/UX</span>
+      </div>
+      <span class="proj-arrow">↗</span>
+    </div>
+    <div class="project-row">
+      <span class="proj-num">06</span>
+      <span class="proj-title">Warsa — E-Commerce Marketplace</span>
+      <div class="proj-tags">
+        <span class="proj-tag">E-Commerce</span>
+        <span class="proj-tag">Next.js</span>
+        <span class="proj-tag">UI/UX</span>
+      </div>
+      <span class="proj-arrow">↗</span>
+    </div>
+    <div class="project-row">
+      <span class="proj-num">07</span>
+      <span class="proj-title">Segara — Travel Booking Platform</span>
+      <div class="proj-tags">
+        <span class="proj-tag">Travel</span>
+        <span class="proj-tag">React</span>
+        <span class="proj-tag">API</span>
+      </div>
+      <span class="proj-arrow">↗</span>
+    </div>
+    <div class="project-row">
+      <span class="proj-num">08</span>
+      <span class="proj-title">Aksara — Typography Showcase</span>
+      <div class="proj-tags">
+        <span class="proj-tag">Creative</span>
+        <span class="proj-tag">CSS</span>
+        <span class="proj-tag">Animation</span>
+      </div>
+      <span class="proj-arrow">↗</span>
+    </div>
+  </div>
+</section>
+
+<!-- CATEGORIES -->
+<section class="s-categories" data-theme="light">
+  <div class="reveal">
+    <span class="s-tag">// Industry Focus</span>
+    <h2 class="s-title">Project<br>Categories</h2>
+  </div>
+  <div class="cat-grid">
+    <div class="cat-card reveal">
+      <span class="cat-icon">💳</span>
+      <div class="cat-name">FinTech</div>
+      <div class="cat-count">8 projects</div>
+    </div>
+    <div class="cat-card reveal" style="transition-delay:0.08s">
+      <span class="cat-icon">🎓</span>
+      <div class="cat-name">EdTech</div>
+      <div class="cat-count">6 projects</div>
+    </div>
+    <div class="cat-card reveal" style="transition-delay:0.16s">
+      <span class="cat-icon">🏥</span>
+      <div class="cat-name">HealthTech</div>
+      <div class="cat-count">7 projects</div>
+    </div>
+    <div class="cat-card reveal" style="transition-delay:0.24s">
+      <span class="cat-icon">🛍️</span>
+      <div class="cat-name">E-Commerce</div>
+      <div class="cat-count">11 projects</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 Arya Pratama</p>
+  <p>UI/UX Designer & Frontend Developer</p>
+  <a href="index.html">← Back to Home</a>
+</footer>
+
+<script>
+const cursor = document.getElementById('cursor');
+const ring = document.getElementById('cursor-ring');
+let mx = 0, my = 0, rx = 0, ry = 0;
+
+document.addEventListener('mousemove', e => {
+  mx = e.clientX; my = e.clientY;
+  cursor.style.left = mx + 'px';
+  cursor.style.top = my + 'px';
+});
+
+function animateRing() {
+  rx += (mx - rx) * 0.12;
+  ry += (my - ry) * 0.12;
+  ring.style.left = rx + 'px';
+  ring.style.top = ry + 'px';
+  requestAnimationFrame(animateRing);
+}
+animateRing();
+
+document.querySelectorAll('a, button, .project-row, .cat-card').forEach(el => {
+  el.addEventListener('mouseenter', () => {
+    cursor.style.width = '18px'; cursor.style.height = '18px';
+    ring.style.width = '52px'; ring.style.height = '52px';
+    ring.style.borderColor = 'rgba(240,165,0,0.8)';
+  });
+  el.addEventListener('mouseleave', () => {
+    cursor.style.width = '10px'; cursor.style.height = '10px';
+    ring.style.width = '36px'; ring.style.height = '36px';
+    ring.style.borderColor = 'rgba(240,165,0,0.5)';
+  });
+});
+
+const navLogo = document.getElementById('navLogo');
+const hamburgerBtn = document.getElementById('hamburger');
+const lightSection = document.querySelector('[data-theme="light"]');
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navLogo.classList.add('dark');
+      hamburgerBtn.classList.add('dark');
+    } else {
+      navLogo.classList.remove('dark');
+      hamburgerBtn.classList.remove('dark');
+    }
+  });
+}, { threshold: 0.3 });
+if (lightSection) obs.observe(lightSection);
+
+let menuOpen = false;
+function toggleMenu() {
+  menuOpen = !menuOpen;
+  document.getElementById('fullMenu').classList.toggle('open', menuOpen);
+  hamburgerBtn.classList.toggle('open', menuOpen);
+}
+
+const backTop = document.getElementById('backTop');
+window.addEventListener('scroll', () => {
+  backTop.classList.toggle('visible', window.scrollY > 400);
+});
+function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
+
+const revealObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+</script>
+</body>
+</html>

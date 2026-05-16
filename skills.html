@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A. — Skills</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Syne+Mono&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+body { background: var(--off-white); }
+
+/* PAGE HERO */
+.page-hero {
+  min-height: 45vh;
+  background: var(--black);
+  display: flex;
+  align-items: flex-end;
+  padding: 0 80px 64px;
+  position: relative;
+  overflow: hidden;
+}
+
+.page-hero-label {
+  font-family: 'Syne Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  color: var(--yellow);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.page-hero-title {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: clamp(3.5rem, 8vw, 7rem);
+  letter-spacing: -0.04em;
+  line-height: 1.0;
+  color: var(--white);
+}
+
+.page-hero-poly {
+  position: absolute;
+  right: -5%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40%;
+  opacity: 0.1;
+  pointer-events: none;
+}
+
+/* SKILLS SECTION */
+.s-skills {
+  background: var(--off-white);
+  padding: 120px 80px;
+  position: relative;
+}
+
+.skills-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  margin-bottom: 5rem;
+  align-items: end;
+}
+
+.skills-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0;
+  border: 1px solid rgba(0,0,0,0.1);
+}
+
+.skill-item {
+  padding: 2rem 1.75rem;
+  border-right: 1px solid rgba(0,0,0,0.1);
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  transition: background 0.25s;
+  cursor: none;
+}
+
+.skill-item:hover { background: var(--yellow); }
+.skill-item:hover .skill-name { color: var(--black); }
+.skill-item:hover .skill-cat { color: rgba(0,0,0,0.5); }
+
+.skill-icon {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.skill-name {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: var(--black);
+  margin-bottom: 0.25rem;
+  transition: color 0.25s;
+}
+
+.skill-cat {
+  font-size: 0.75rem;
+  color: #999;
+  transition: color 0.25s;
+}
+
+/* TOOLS STRIP */
+.s-tools {
+  background: var(--black);
+  padding: 100px 80px;
+}
+
+.tools-header {
+  margin-bottom: 4rem;
+}
+
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.tool-category {
+  border: 1px solid var(--border);
+  padding: 2.5rem;
+  transition: border-color 0.3s;
+}
+
+.tool-category:hover { border-color: var(--yellow); }
+
+.tool-cat-label {
+  font-family: 'Syne Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  color: var(--yellow);
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  display: block;
+}
+
+.tool-cat-title {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--white);
+  margin-bottom: 1.25rem;
+}
+
+.tool-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.tool-list li {
+  font-size: 0.85rem;
+  color: var(--gray);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.tool-list li::before {
+  content: '—';
+  color: var(--yellow);
+  font-size: 0.7rem;
+}
+
+@media (max-width: 1024px) {
+  .page-hero { padding: 0 40px 50px; }
+  .s-skills { padding: 80px 40px; }
+  .skills-header { grid-template-columns: 1fr; gap: 1.5rem; }
+  .s-tools { padding: 80px 40px; }
+  .tools-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+  .page-hero { padding: 0 24px 40px; }
+  .s-skills { padding: 60px 24px; }
+  .s-tools { padding: 60px 24px; }
+  .tools-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- CURSOR -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursor-ring"></div>
+
+<!-- SIDE STRIPE -->
+<div class="side-stripe"></div>
+
+<!-- SIDE LABEL -->
+<div class="side-label" id="sideLabel">SKILLS</div>
+
+<!-- BACK TO TOP -->
+<div class="back-top" id="backTop">
+  <button class="back-top-btn" onclick="scrollToTop()">↑</button>
+  <span class="back-top-text">BACK TO TOP</span>
+</div>
+
+<!-- FULLSCREEN MENU -->
+<div class="fullscreen-menu" id="fullMenu">
+  <ul class="menu-nav">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="skills.html" class="active">Skills</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="menu-social">
+    <a href="#">Instagram</a>
+    <a href="#">LinkedIn</a>
+    <a href="#">GitHub</a>
+    <a href="#">Dribbble</a>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a href="index.html" class="nav-logo" id="navLogo">A.</a>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <svg class="page-hero-poly" viewBox="0 0 500 500" fill="none">
+    <polygon points="250,20 430,100 470,280 370,430 130,430 30,280 70,100" fill="none" stroke="white" stroke-width="1.2"/>
+    <polygon points="250,80 390,145 420,280 330,390 170,390 80,280 110,145" fill="none" stroke="white" stroke-width="0.8"/>
+  </svg>
+  <div>
+    <span class="page-hero-label">// My Toolkit</span>
+    <h1 class="page-hero-title">What I<br>Work With.</h1>
+  </div>
+</div>
+
+<!-- SKILLS -->
+<section class="s-skills" data-theme="light">
+  <div class="skills-header reveal">
+    <div>
+      <span class="s-tag">// The Technology Skills</span>
+      <h2 class="s-title">Core<br>Competencies</h2>
+    </div>
+    <p class="s-desc">From wireframes to production-ready code — I bridge the gap between design and engineering with a full set of modern tools.</p>
+  </div>
+  <div class="skills-list reveal" style="transition-delay:0.15s">
+    <div class="skill-item"><span class="skill-icon">◈</span><div class="skill-name">Figma</div><div class="skill-cat">Design</div></div>
+    <div class="skill-item"><span class="skill-icon">⚛</span><div class="skill-name">React</div><div class="skill-cat">Frontend</div></div>
+    <div class="skill-item"><span class="skill-icon">▲</span><div class="skill-name">Next.js</div><div class="skill-cat">Framework</div></div>
+    <div class="skill-item"><span class="skill-icon">✦</span><div class="skill-name">TypeScript</div><div class="skill-cat">Language</div></div>
+    <div class="skill-item"><span class="skill-icon">⬡</span><div class="skill-name">Tailwind</div><div class="skill-cat">Styling</div></div>
+    <div class="skill-item"><span class="skill-icon">◎</span><div class="skill-name">UX Research</div><div class="skill-cat">Process</div></div>
+    <div class="skill-item"><span class="skill-icon">⊞</span><div class="skill-name">Design System</div><div class="skill-cat">Architecture</div></div>
+    <div class="skill-item"><span class="skill-icon">↻</span><div class="skill-name">Framer Motion</div><div class="skill-cat">Animation</div></div>
+    <div class="skill-item"><span class="skill-icon">⟨/⟩</span><div class="skill-name">HTML & CSS</div><div class="skill-cat">Core</div></div>
+    <div class="skill-item"><span class="skill-icon">⊕</span><div class="skill-name">Git</div><div class="skill-cat">Version Control</div></div>
+    <div class="skill-item"><span class="skill-icon">□</span><div class="skill-name">Storybook</div><div class="skill-cat">Components</div></div>
+    <div class="skill-item"><span class="skill-icon">◉</span><div class="skill-name">Accessibility</div><div class="skill-cat">WCAG</div></div>
+  </div>
+</section>
+
+<!-- TOOLS BY CATEGORY -->
+<section class="s-tools" data-theme="dark">
+  <div class="tools-header reveal">
+    <span class="s-tag" style="color:rgba(240,165,0,0.7)">// Deep Dive</span>
+    <h2 class="s-title" style="color:var(--white)">Tools By<br>Category</h2>
+  </div>
+  <div class="tools-grid">
+    <div class="tool-category reveal">
+      <span class="tool-cat-label">Design</span>
+      <div class="tool-cat-title">Visual Design</div>
+      <ul class="tool-list">
+        <li>Figma</li>
+        <li>Adobe XD</li>
+        <li>Illustrator</li>
+        <li>Photoshop</li>
+        <li>Spline (3D)</li>
+      </ul>
+    </div>
+    <div class="tool-category reveal" style="transition-delay:0.1s">
+      <span class="tool-cat-label">Development</span>
+      <div class="tool-cat-title">Frontend Code</div>
+      <ul class="tool-list">
+        <li>React / Next.js</li>
+        <li>TypeScript</li>
+        <li>Tailwind CSS</li>
+        <li>Framer Motion</li>
+        <li>HTML & CSS</li>
+      </ul>
+    </div>
+    <div class="tool-category reveal" style="transition-delay:0.2s">
+      <span class="tool-cat-label">Process</span>
+      <div class="tool-cat-title">Workflow & Ops</div>
+      <ul class="tool-list">
+        <li>Git & GitHub</li>
+        <li>Storybook</li>
+        <li>Jira / Linear</li>
+        <li>Notion</li>
+        <li>Lottie / Rive</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 Arya Pratama</p>
+  <p>UI/UX Designer & Frontend Developer</p>
+  <a href="index.html">← Back to Home</a>
+</footer>
+
+<script>
+const cursor = document.getElementById('cursor');
+const ring = document.getElementById('cursor-ring');
+let mx = 0, my = 0, rx = 0, ry = 0;
+
+document.addEventListener('mousemove', e => {
+  mx = e.clientX; my = e.clientY;
+  cursor.style.left = mx + 'px';
+  cursor.style.top = my + 'px';
+});
+
+function animateRing() {
+  rx += (mx - rx) * 0.12;
+  ry += (my - ry) * 0.12;
+  ring.style.left = rx + 'px';
+  ring.style.top = ry + 'px';
+  requestAnimationFrame(animateRing);
+}
+animateRing();
+
+document.querySelectorAll('a, button, .skill-item, .tool-category').forEach(el => {
+  el.addEventListener('mouseenter', () => {
+    cursor.style.width = '18px'; cursor.style.height = '18px';
+    ring.style.width = '52px'; ring.style.height = '52px';
+    ring.style.borderColor = 'rgba(240,165,0,0.8)';
+  });
+  el.addEventListener('mouseleave', () => {
+    cursor.style.width = '10px'; cursor.style.height = '10px';
+    ring.style.width = '36px'; ring.style.height = '36px';
+    ring.style.borderColor = 'rgba(240,165,0,0.5)';
+  });
+});
+
+const navLogo = document.getElementById('navLogo');
+const hamburgerBtn = document.getElementById('hamburger');
+const lightSection = document.querySelector('[data-theme="light"]');
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navLogo.classList.add('dark');
+      hamburgerBtn.classList.add('dark');
+    } else {
+      navLogo.classList.remove('dark');
+      hamburgerBtn.classList.remove('dark');
+    }
+  });
+}, { threshold: 0.3 });
+if (lightSection) obs.observe(lightSection);
+
+let menuOpen = false;
+function toggleMenu() {
+  menuOpen = !menuOpen;
+  document.getElementById('fullMenu').classList.toggle('open', menuOpen);
+  hamburgerBtn.classList.toggle('open', menuOpen);
+}
+
+const backTop = document.getElementById('backTop');
+window.addEventListener('scroll', () => {
+  backTop.classList.toggle('visible', window.scrollY > 400);
+});
+function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
+
+const revealObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+</script>
+</body>
+</html>

@@ -1,0 +1,508 @@
+/* =========================================================
+   CSS FILE — css/style.css
+   Portfolio K. — UI/UX Designer & Frontend Developer
+   ========================================================= */
+
+/* =========================================================
+   RESET
+   ========================================================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #050505;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  overflow-x: hidden;
+}
+
+/* =========================================================
+   INTRO SCREEN
+   ========================================================= */
+#intro-screen {
+  position: fixed;
+  inset: 0;
+  background: #050505;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+#intro-bar {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 0;
+  height: 2px;
+  background: #ffffff;
+  transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#intro-logo {
+  font-size: clamp(3rem, 15vw, 7rem);
+  font-weight: 700;
+  color: #E9F1FA;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  z-index: 2;
+}
+
+#intro-sub {
+  margin-top: 1rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  color: rgba(255, 255, 255, 0.4);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: 0.5s;
+  z-index: 2;
+}
+
+#intro-counter {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  color: rgba(255, 255, 255, 0.2);
+  opacity: 0;
+  transition: 0.4s;
+}
+
+#intro-corner-tl,
+#intro-corner-br {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  opacity: 0;
+  transition: 0.4s;
+}
+
+#intro-corner-tl {
+  top: 36px;
+  left: 36px;
+  border-top: 1px solid rgba(240, 165, 0, 0.5);
+  border-left: 1px solid rgba(240, 165, 0, 0.5);
+}
+
+#intro-corner-br {
+  bottom: 36px;
+  right: 36px;
+  border-bottom: 1px solid rgba(240, 165, 0, 0.5);
+  border-right: 1px solid rgba(240, 165, 0, 0.5);
+}
+
+#intro-wipe-top,
+#intro-wipe-bottom {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 0;
+  background: #050505;
+  z-index: 5;
+  transition: height 0.7s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+#intro-wipe-top {
+  top: 0;
+}
+
+#intro-wipe-bottom {
+  bottom: 0;
+}
+
+/* =========================================================
+   MAIN CONTENT REVEAL
+   ========================================================= */
+#main-content {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(25px);
+  transition: opacity 1s ease, transform 1s ease, visibility 1s;
+}
+
+#main-content.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+#intro-screen {
+  transition: opacity 0.8s ease;
+}
+
+/* =========================================================
+   NAVBAR
+   ========================================================= */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 28px 48px;
+  z-index: 1000;
+}
+
+.nav-logo {
+  color: white;
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.hamburger {
+  width: 42px;
+  height: 42px;
+  background: none;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.hamburger span {
+  width: 100%;
+  height: 2px;
+  background: white;
+  border-radius: 20px;
+}
+
+/* =========================================================
+   FULLSCREEN MENU
+   ========================================================= */
+.fullscreen-menu {
+  position: fixed;
+  inset: 0;
+  background: #050505;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.4s ease;
+}
+
+.fullscreen-menu.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.menu-nav {
+  list-style: none;
+  text-align: center;
+}
+
+.menu-nav li {
+  margin: 22px 0;
+}
+
+.menu-nav a {
+  color: white;
+  text-decoration: none;
+  font-size: clamp(2rem, 6vw, 4rem);
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.menu-nav a:hover {
+  color: #174560;
+}
+
+/* =========================================================
+   HERO
+   ========================================================= */
+.s-hero {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  padding: 0 48px;
+}
+
+/* =========================================================
+   HERO SLIDER
+   ========================================================= */
+.hero-slider {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  top: 0;
+  left: 100%;
+  transform: scale(1.05);
+  transition: left 1.5s cubic-bezier(0.77, 0, 0.175, 1), transform 6s ease;
+}
+
+.slide.active {
+  left: 0;
+  z-index: 2;
+  transform: scale(1);
+}
+
+.slide.prev {
+  left: -100%;
+  z-index: 1;
+}
+
+/* =========================================================
+   OVERLAY & CONTENT
+   ========================================================= */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.45));
+  z-index: 3;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 5;
+  max-width: 760px;
+}
+
+.hero-h1 {
+  font-size: clamp(1.8rem, 7vw, 3rem);
+  line-height: 1.02;
+  letter-spacing: -0.05em;
+  margin-bottom: 1.5rem;
+}
+
+.hero-h1 .bold {
+  font-weight: 600;
+  color: white;
+}
+
+.hero-h1 .light {
+  font-weight: 300;
+  color: #888;
+}
+
+.hero-desc {
+  font-family: 'Outfit', sans-serif;
+  color: #c7c7c7;
+  font-size: 1rem;
+  line-height: 1.8;
+  max-width: 460px;
+  margin-bottom: 2.5rem;
+}
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.btn-pill {
+  padding: 14px 24px;
+  border-radius: 999px;
+  background: #E9F1FA;
+  color: black;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: 0.3s ease;
+}
+
+.btn-pill:hover {
+  transform: translateY(-3px);
+}
+
+.btn-text {
+  display: flex;
+  align-items: center;
+  color: white;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* =========================================================
+   SCROLL INDICATOR
+   ========================================================= */
+.scroll-indicator {
+  position: absolute;
+  right: 70px;
+  bottom: 60px;
+  width: 120px;
+  height: 120px;
+  z-index: 5;
+}
+
+.scroll-ring-text {
+  animation: spin 10s linear infinite;
+  transform-origin: center;
+}
+
+.scroll-arrow-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #E9F1FA;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  font-size: 1.1rem;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* =========================================================
+   INTRO SECTION
+   ========================================================= */
+.s-intro {
+  padding: 120px 48px;
+  background: #080808;
+}
+
+.intro-h2 {
+  font-size: clamp(2rem, 5vw, 4.5rem);
+  line-height: 1.1;
+  letter-spacing: -0.05em;
+  margin-bottom: 2rem;
+}
+
+.intro-h2 strong {
+  font-weight: 600;
+}
+
+.intro-h2 .light {
+  color: #777;
+  font-weight: 300;
+}
+
+.intro-grid {
+  margin-top: 80px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.intro-grid-item {
+  padding: 2rem;
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.intro-grid-item:last-child {
+  border-right: none;
+}
+
+.intro-grid-num {
+  color: #00ABE4;
+  font-size: 0.7rem;
+  margin-bottom: 1rem;
+}
+
+.intro-grid-title {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 0.8rem;
+  line-height: 1.5;
+}
+
+.intro-grid-sub {
+  color: #909090;
+  line-height: 1.8;
+  font-family: 'Outfit', sans-serif;
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+footer {
+  padding: 40px 48px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  color: #8b8b8b;
+  font-size: 0.9rem;
+}
+
+footer a {
+  color: white;
+  text-decoration: none;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+@media (max-width: 992px) {
+  .intro-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  nav {
+    padding: 24px;
+  }
+
+  .s-hero {
+    padding: 0 24px;
+  }
+
+  .s-intro {
+    padding: 80px 24px;
+  }
+
+  .hero-h1 {
+    font-size: clamp(1rem, 10vw, 4rem);
+  }
+
+  .scroll-indicator {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .intro-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
