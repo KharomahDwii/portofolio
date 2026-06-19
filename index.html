@@ -1,93 +1,115 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Centered Navbar</title>
-
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-  <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-  <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-
-  <div class="bg-layer"></div>
-  <div class="grid-overlay"></div>
-
-  <main class="page-content">
-    <nav class="navbar-wrapper">
-      <div class="navbar" id="navbar">
-
-        <div class="nav-inner">
-
-          <div class="brand">
-    <span class="brand-name">Dwi</span>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Portofolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="bg-layer">
+    <div class="bg-blob bg-blob-1"></div>
+    <div class="bg-blob bg-blob-2"></div>
+    <div class="bg-blob bg-blob-3"></div>
+    <div class="bg-noise"></div>
   </div>
-          
-          <a class="nav-link active" href="#beranda" data-page="beranda">
-            <i class="fa-solid fa-house"></i>
-            <span>Beranda</span>
-            <div class="tooltip">Halaman utama</div>
-          </a>
+  
+  <div class="grid-overlay"></div>
+    <main class="page-content">
+      <nav class="navbar-wrapper">
+        <div class="navbar" id="navbar">
+          <div class="nav-inner">
+            <div class="brand">
+              <span class="brand-name">K</span>
+            </div>
+            <a class="nav-link" href="#beranda" data-page="beranda">
+              <i class="fa-solid fa-house"></i>
+              <span>Beranda</span>
+              <div class="tooltip">Halaman utama</div>
+            </a>
 
-          <a class="nav-link" href="#tentang" data-page="tentang">
-            <i class="fa-solid fa-user"></i>
-            <span>Tentang</span>
-            <div class="tooltip">Tentang kami</div>
-          </a>
+            <a class="nav-link" href="#tentang" data-page="tentang">
+              <i class="fa-solid fa-user"></i>
+              <span>Tentang</span>
+              <div class="tooltip">Tentang kami</div>
+            </a>
 
-          <a class="nav-link" href="#layanan" data-page="layanan">
-            <i class="fa-solid fa-briefcase"></i>
-            <span>Layanan</span>
-            <div class="tooltip">Layanan kami</div>
-          </a>
+            <a class="nav-link" href="#layanan" data-page="layanan">
+              <i class="fa-solid fa-briefcase"></i>
+              <span>Layanan</span>
+              <div class="tooltip">Layanan kami</div>
+            </a>
 
-          <div class="nav-divider"></div>
-          <a class="nav-link" href="#portofolio" data-page="portofolio">
-            <i class="fa-solid fa-folder-open"></i>
-            <span>Portofolio</span>
-            <div class="tooltip">Karya kami</div>
-          </a>
+            <div class="nav-divider"></div>
+            <a class="nav-link" href="#portofolio" data-page="portofolio">
+              <i class="fa-solid fa-folder-open"></i>
+              <span>Portofolio</span>
+              <div class="tooltip">Karya kami</div>
+            </a>
 
-          <a class="nav-link" href="#blog" data-page="blog">
-            <i class="fa-solid fa-pen-nib"></i>
-            <span>Blog</span>
-            <div class="tooltip">Artikel terbaru</div>
-          </a>
+            <a class="nav-link" href="#blog" data-page="blog">
+              <i class="fa-solid fa-pen-nib"></i>
+              <span>Blog</span>
+              <div class="tooltip">Artikel terbaru</div>
+            </a>
 
-          <a class="nav-link" href="#kontak" data-page="kontak">
-            <i class="fa-solid fa-envelope"></i>
-            <span>Kontak</span>
-            <div class="tooltip">Hubungi kami</div>
-          </a>
-
+            <a class="nav-link" href="#kontak" data-page="kontak">
+              <i class="fa-solid fa-envelope"></i>
+              <span>Kontak</span>
+              <div class="tooltip">Hubungi kami</div>
+            </a>
+          </div>
         </div>
+      </nav>
+      <section class="hero" id="beranda">
+        <div class="hero-left">
+          <span class="hero-badge">Website Developer & Designer</span>
+          <h1>Kharomah<br />Dwi</h1>
+          <p>I'm an Information Systems student passionate about UI/UX design, frontend development, and creating modern digital experiences.</p>
+          <div class="hero-buttons">
+            <a href="#" class="btn-primary">View Projects</a>
+            <a href="#" class="btn-secondary">Contact Me</a>
+          </div>
+        </div>
+        <div class="hero-right">
+          <div class="card-wrapper card-1">
+            <div class="floating-card">
+              <h3>Frontend Development</h3>
+              <p>Building responsive and modern websites.</p>
+            </div>
+          </div>
+          <div class="card-wrapper card-2">
+            <div class="floating-card">
+              <h3>Information Systems</h3>
+              <p>Exploring technology and digital innovation.</p>
+            </div>
+          </div>
+          <div class="card-wrapper card-3">
+            <div class="floating-card">
+              <h3>UI/UX Design</h3>
+              <p>Creating meaningful user experiences.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <section id="tentang" class="demo-sections">
+      <div class="demo-card">
+        <h2>Desain Tengah</h2>
+        <p>Navbar berada tepat di tengah halaman.</p>
       </div>
-    </nav>
-  </main>
-
-  <section class="demo-sections">
-    <div class="demo-card">
-      <h2>Desain Tengah</h2>
-      <p>Navbar berada tepat di tengah halaman.</p>
-    </div>
-
-    <div class="demo-card">
-      <h2>Gradasi Hitam-Putih</h2>
-      <p>Gradient gelap menciptakan kesan premium.</p>
-    </div>
-
-    <div class="demo-card">
-      <h2>Efek Blur dan Animasi</h2>
-      <p>Menggunakan backdrop-filter dan animasi modern.</p>
-    </div>
-  </section>
-
-  <div class="toast" id="toast"></div>
-
-  <script src="script.js"></script>
-</body>
+      <div class="demo-card">
+        <h2>Gradasi Hitam-Putih</h2>
+        <p>Gradient gelap menciptakan kesan premium.</p>
+      </div>
+      <div class="demo-card">
+        <h2>Efek Blur dan Animasi</h2>
+        <p>Menggunakan backdrop-filter dan animasi modern.</p>
+      </div>
+    </section>
+    <div class="toast" id="toast"></div>
+    <script src="script.js"></script>
+  </body>
 </html>
