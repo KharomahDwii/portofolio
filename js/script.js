@@ -1,93 +1,172 @@
-// slide
-function initHeroSlider() {
-  const slides = document.querySelectorAll('.slide');
-  if (slides.length === 0) return;
+   // ===== Elemen =====
+    const navbar = document.getElementById('navbar');
+    const navLinks = document.querySelectorAll('.nav-link');
+    const ctaBtn = document.getElementById('ctaBtn');
+    const toast = document.getElementById('toast');
 
-  let currentSlide = 0;
+    // ===== Fungsi toast =====
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2500);
+    }
 
-  setInterval(() => {
-    slides.forEach(slide => {
-      slide.classList.remove('active', 'prev');
+    // ===== Klik navigasi — pindah active state =====
+    navLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        // Hapus active dari semua
+        navLinks.forEach(l => l.classList.remove('active'));
+        // Tambahkan active ke yang diklik
+        link.classList.add('active');
+
+        const page = link.getAttribute('data-page');
+        const label = link.querySelector('span')?.textContent || page;
+        showToast(`Navigasi ke ${label}`);
+
+        // Efek ripple kecil
+        createRipple(link, e);
+      });
     });
 
-    slides[currentSlide].classList.add('prev');
-    currentSlide = (currentSlide + 1) % slides.length;
-    slides[currentSlide].classList.add('active');
-  }, 5000);
-}
-
-// menu
-function initMenuToggle() {
-  const hamburger = document.getElementById('hamburger');
-  const fullMenu = document.getElementById('fullMenu');
-
-  if (!hamburger || !fullMenu) return;
-
-  hamburger.addEventListener('click', () => {
-    fullMenu.classList.toggle('open');
-  });
-
-  // Tutup menu saat link diklik
-  fullMenu.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      fullMenu.classList.remove('open');
+    // ===== Tombol CTA =====
+    ctaBtn.addEventListener('click', () => {
+      showToast('Selamat datang! Memulai perjalanan...');
+      // Animasi khusus pada klik
+      ctaBtn.style.transform = 'scale(0.92)';
+      setTimeout(() => {
+        ctaBtn.style.transform = '';
+      }, 200);
     });
-  });
-}
 
-// animasi intro
-function initIntroAnimation() {
-  const screen = document.getElementById('intro-screen');
-  if (!screen) return;
+    // ===== Efek ripple saat klik =====
+    function createRipple(element, event) {
+      const ripple = document.createElement('span');
+      const rect = element.getBoundingClientRect();
+      const size = Math.max(rect.width, rect.height);
+      const x = event.clientX - rect.left - size / 2;
+      const y = event.clientY - rect.top - size / 2;
 
-  const bar = document.getElementById('intro-bar');
-  const logo = document.getElementById('intro-logo');
-  const sub = document.getElementById('intro-sub');
-  const counter = document.getElementById('intro-counter');
-  const cornerTL = document.getElementById('intro-corner-tl');
-  const cornerBR = document.getElementById('intro-corner-br');
-  const wipeTop = document.getElementById('intro-wipe-top');
-  const wipeBot = document.getElementById('intro-wipe-bottom');
+      ripple.style.cssText = `
+        position: absolute;
+        width: ${size}px;
+        height: ${size}px;
+        left: ${x}px;
+        top: ${y}px;
+        background: rgba(255,255,255,0.15);
+        border-radius: 50%;
+        transform: scale(0);
+        pointer-events: none;
+        z-index: 0;
+      `;
 
-  // Timeline animasi
-  setTimeout(() => { if (bar) bar.style.width = '100%'; }, 150);
-  setTimeout(() => {
-    if (logo) {
-      logo.style.opacity = '1';
-      logo.style.transform = 'translateY(0)';
+      element.style.position = 'relative';
+      element.style.overflow = 'hidden';
+      element.appendChild(ripple);
+
+      ripple.animate(
+        [
+          { transform: 'scale(0)', opacity: 1 },
+          { transform: 'scale(2.5)', opacity: 0 }
+        ],
+        { duration: 600, easing: 'ease-out' }
+      ).onfinish = () => ripple.remove();
     }
-  }, 600);
-  setTimeout(() => {
-    if (cornerTL) cornerTL.style.opacity = '1';
-    if (cornerBR) cornerBR.style.opacity = '1';
-  }, 700);
-  setTimeout(() => {
-    if (sub) {
-      sub.style.opacity = '1';
-      sub.style.transform = 'translateY(0)';
+
+    // ===== Partikel mengambang di sekitar navbar =====
+    function createParticle() {
+      const particle = document.createElement('div');
+      particle.classList.add('particle');
+
+      // Posisi acak di sekitar navbar
+      const navRect = navbar.getBoundingClientRect();
+      const x = Math.random() * navRect.width;
+      const drift = (Math.random() - 0.5) * 60;
+      const duration = 2 + Math.random() * 3;
+      const size = 1 + Math.random() * 2;
+
+      particle.style.cssText += `
+        left: ${x}px;
+        bottom: -5px;
+        width: ${size}px;
+        height: ${size}px;
+        --drift: ${drift}px;
+        animation-duration: ${duration}s;
+        opacity: 0;
+      `;
+
+      navbar.appendChild(particle);
+
+      // Hapus setelah animasi selesai
+      setTimeout(() => particle.remove(), duration * 1000);
     }
-  }, 900);
-  setTimeout(() => { if (counter) counter.style.opacity = '1'; }, 1100);
-  setTimeout(() => {
-    if (wipeTop) wipeTop.style.height = '55%';
-    if (wipeBot) wipeBot.style.height = '55%';
-  }, 2200);
-  setTimeout(() => { if (screen) screen.style.opacity = '0'; }, 3000);
-  setTimeout(() => {
-    if (screen) screen.style.display = 'none';
-    const main = document.getElementById('main-content');
-    if (main) main.classList.add('visible');
-  }, 3800);
-}
 
-function init() {
-  initHeroSlider();
-  initMenuToggle();
-  initIntroAnimation();
-}
+    // Buat partikel secara berkala
+    setInterval(createParticle, 400);
 
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', init);
-} else {
-  init();
-}
+    // ===== Efek paralaks halus pada navbar saat mouse bergerak =====
+    let mouseX = 0;
+    let mouseY = 0;
+    let currentX = 0;
+    let currentY = 0;
+
+    document.addEventListener('mousemove', (e) => {
+      const centerX = window.innerWidth / 2;
+      const centerY = window.innerHeight / 2;
+      mouseX = (e.clientX - centerX) / centerX; // -1 sampai 1
+      mouseY = (e.clientY - centerY) / centerY;
+    });
+
+    function animateParallax() {
+      // Interpolasi halus
+      currentX += (mouseX - currentX) * 0.06;
+      currentY += (mouseY - currentY) * 0.06;
+
+      const rotateX = currentY * -3; // Derajat rotasi
+      const rotateY = currentX * 3;
+
+      navbar.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+
+      requestAnimationFrame(animateParallax);
+    }
+
+    // Jangan aktifkan paralaks jika hover (biarkan hover transform bekerja)
+    let isHovering = false;
+    navbar.addEventListener('mouseenter', () => {
+      isHovering = true;
+      navbar.style.transform = 'translateY(-2px)';
+    });
+    navbar.addEventListener('mouseleave', () => {
+      isHovering = false;
+    });
+
+    function smoothLoop() {
+      if (!isHovering) {
+        currentX += (mouseX - currentX) * 0.06;
+        currentY += (mouseY - currentY) * 0.06;
+        const rotateX = currentY * -3;
+        const rotateY = currentX * 3;
+        navbar.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+      }
+      requestAnimationFrame(smoothLoop);
+    }
+    smoothLoop();
+
+    // ===== Scroll reveal untuk demo card =====
+    const demoCards = document.querySelectorAll('.demo-card');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+
+    demoCards.forEach((card, i) => {
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(40px)';
+      card.style.transition = `all 0.8s cubic-bezier(0.16, 1, 0.3, 1) ${i * 0.15}s`;
+      observer.observe(card);
+    });
