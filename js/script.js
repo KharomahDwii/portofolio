@@ -133,3 +133,21 @@ demoCards.forEach((card, i) => {
   card.style.transition = `all .8s cubic-bezier(.16,1,.3,1) ${i * 0.15}s`;
   observer.observe(card);
 });
+
+/* === Intersection Observer untuk Animasi Slide About Section === */
+const slideObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        slideObserver.unobserve(entry.target);
+      }
+    });
+  },
+  { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
+);
+
+document.querySelectorAll(".grid-item").forEach((item) => {
+  slideObserver.observe(item);
+});
+

@@ -10,57 +10,44 @@
   </head>
   <body>
     <div class="bg-layer">
-    <div class="bg-blob bg-blob-1"></div>
-    <div class="bg-blob bg-blob-2"></div>
-    <div class="bg-blob bg-blob-3"></div>
-    <div class="bg-noise"></div>
-  </div>
-  
-  <div class="grid-overlay"></div>
+      <div class="bg-blob bg-blob-1"></div>
+      <div class="bg-blob bg-blob-2"></div>
+      <div class="bg-blob bg-blob-3"></div>
+      <div class="bg-noise"></div>
+    </div>
+    <div class="grid-overlay"></div>
     <main class="page-content">
       <nav class="navbar-wrapper">
         <div class="navbar" id="navbar">
-          <div class="nav-inner">
-            <div class="brand">
-              <span class="brand-name">K</span>
-            </div>
-            <a class="nav-link" href="#beranda" data-page="beranda">
-              <i class="fa-solid fa-house"></i>
-              <span>Beranda</span>
-              <div class="tooltip">Halaman utama</div>
-            </a>
-
-            <a class="nav-link" href="#tentang" data-page="tentang">
-              <i class="fa-solid fa-user"></i>
-              <span>Tentang</span>
-              <div class="tooltip">Tentang kami</div>
-            </a>
-
-            <a class="nav-link" href="#layanan" data-page="layanan">
-              <i class="fa-solid fa-briefcase"></i>
-              <span>Layanan</span>
-              <div class="tooltip">Layanan kami</div>
-            </a>
-
-            <div class="nav-divider"></div>
-            <a class="nav-link" href="#portofolio" data-page="portofolio">
-              <i class="fa-solid fa-folder-open"></i>
-              <span>Portofolio</span>
-              <div class="tooltip">Karya kami</div>
-            </a>
-
-            <a class="nav-link" href="#blog" data-page="blog">
-              <i class="fa-solid fa-pen-nib"></i>
-              <span>Blog</span>
-              <div class="tooltip">Artikel terbaru</div>
-            </a>
-
-            <a class="nav-link" href="#kontak" data-page="kontak">
-              <i class="fa-solid fa-envelope"></i>
-              <span>Kontak</span>
-              <div class="tooltip">Hubungi kami</div>
-            </a>
-          </div>
+          <a class="nav-link" href="#beranda" data-page="beranda">
+            <i class="fa-solid fa-house"></i>
+            <span>Beranda</span>
+          </a>
+          <span class="nav-dot"></span>
+          <a class="nav-link" href="#tentang" data-page="tentang">
+            <i class="fa-solid fa-user"></i>
+            <span>Tentang</span>
+          </a>
+          <span class="nav-dot"></span>
+          <a class="nav-link" href="#layanan" data-page="layanan">
+            <i class="fa-solid fa-briefcase"></i>
+            <span>Layanan</span>
+          </a>
+          <span class="nav-dot"></span>
+          <a class="nav-link" href="#portofolio" data-page="portofolio">
+            <i class="fa-solid fa-folder-open"></i>
+            <span>Portofolio</span>
+          </a>
+          <span class="nav-dot"></span>
+          <a class="nav-link" href="#blog" data-page="blog">
+            <i class="fa-solid fa-pen-nib"></i>
+            <span>Blog</span>
+          </a>
+          <span class="nav-dot"></span>
+          <a class="nav-link" href="#kontak" data-page="kontak">
+            <i class="fa-solid fa-envelope"></i>
+            <span>Kontak</span>
+          </a>
         </div>
       </nav>
       <section class="hero" id="beranda">
@@ -94,21 +81,52 @@
           </div>
         </div>
       </section>
+      <section id="tentang" class="about-section">
+  <div class="masonry-grid">
+    <!-- Item 1: Besar (landscape) -->
+    <div class="grid-item">
+      <a href="https://example.com" target="_blank" class="grid-link">
+        <img src="https://picsum.photos/seed/photo1/800/500.jpg" alt="Photo 1" loading="lazy">
+      </a>
+    </div>
+
+    <!-- Item 2: Medium (portrait) -->
+    <div class="grid-item">
+      <a href="https://example.com" target="_blank" class="grid-link">
+        <img src="https://picsum.photos/seed/photo2/400/500.jpg" alt="Photo 2" loading="lazy">
+      </a>
+    </div>
+
+    <!-- Item 3: Kecil -->
+    <div class="grid-item">
+      <a href="https://example.com" target="_blank" class="grid-link">
+        <img src="https://picsum.photos/seed/photo3/400/400.jpg" alt="Photo 3" loading="lazy">
+      </a>
+    </div>
+
+    <!-- Item 4: Kecil -->
+    <div class="grid-item">
+      <a href="https://example.com" target="_blank" class="grid-link">
+        <img src="img/slide1.jpg" alt="Photo 4" loading="lazy">
+      </a>
+    </div>
+
+    <!-- Item 5: Kecil -->
+    <div class="grid-item">
+      <a href="https://example.com" target="_blank" class="grid-link">
+        <img src="img/slide2.jpg" alt="Photo 5" loading="lazy">
+      </a>
+    </div>
+
+    <!-- Item 6: Tall (9:16) -->
+    <div class="grid-item">
+      <a href="https://example.com" target="_blank" class="grid-link">
+        <img src="https://picsum.photos/seed/photo6/450/800.jpg" alt="Photo 6" loading="lazy">
+      </a>
+    </div>
+  </div>
+</section>
     </main>
-    <section id="tentang" class="demo-sections">
-      <div class="demo-card">
-        <h2>Desain Tengah</h2>
-        <p>Navbar berada tepat di tengah halaman.</p>
-      </div>
-      <div class="demo-card">
-        <h2>Gradasi Hitam-Putih</h2>
-        <p>Gradient gelap menciptakan kesan premium.</p>
-      </div>
-      <div class="demo-card">
-        <h2>Efek Blur dan Animasi</h2>
-        <p>Menggunakan backdrop-filter dan animasi modern.</p>
-      </div>
-    </section>
     <div class="toast" id="toast"></div>
     <script src="script.js"></script>
   </body>
