@@ -4,6 +4,27 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Portofolio</title>
+    <script>
+      if ("scrollRestoration" in history) {
+        history.scrollRestoration = "manual";
+      }
+
+      window.scrollTo(0, 0);
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+
+      window.addEventListener(
+        "scroll",
+        function preventScroll() {
+          window.scrollTo(0, 0);
+        },
+        { once: true },
+      );
+
+      setTimeout(function () {
+        window.removeEventListener("scroll", preventScroll);
+      }, 1000);
+    </script>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <link rel="stylesheet" href="css/style.css" />
@@ -82,50 +103,39 @@
         </div>
       </section>
       <section id="tentang" class="about-section">
-  <div class="masonry-grid">
-    <!-- Item 1: Besar (landscape) -->
-    <div class="grid-item">
-      <a href="https://example.com" target="_blank" class="grid-link">
-        <img src="https://picsum.photos/seed/photo1/800/500.jpg" alt="Photo 1" loading="lazy">
-      </a>
-    </div>
-
-    <!-- Item 2: Medium (portrait) -->
-    <div class="grid-item">
-      <a href="https://example.com" target="_blank" class="grid-link">
-        <img src="https://picsum.photos/seed/photo2/400/500.jpg" alt="Photo 2" loading="lazy">
-      </a>
-    </div>
-
-    <!-- Item 3: Kecil -->
-    <div class="grid-item">
-      <a href="https://example.com" target="_blank" class="grid-link">
-        <img src="https://picsum.photos/seed/photo3/400/400.jpg" alt="Photo 3" loading="lazy">
-      </a>
-    </div>
-
-    <!-- Item 4: Kecil -->
-    <div class="grid-item">
-      <a href="https://example.com" target="_blank" class="grid-link">
-        <img src="img/slide1.jpg" alt="Photo 4" loading="lazy">
-      </a>
-    </div>
-
-    <!-- Item 5: Kecil -->
-    <div class="grid-item">
-      <a href="https://example.com" target="_blank" class="grid-link">
-        <img src="img/slide2.jpg" alt="Photo 5" loading="lazy">
-      </a>
-    </div>
-
-    <!-- Item 6: Tall (9:16) -->
-    <div class="grid-item">
-      <a href="https://example.com" target="_blank" class="grid-link">
-        <img src="https://picsum.photos/seed/photo6/450/800.jpg" alt="Photo 6" loading="lazy">
-      </a>
-    </div>
-  </div>
-</section>
+        <div class="masonry-grid">
+          <div class="grid-item">
+            <a href="https://example.com" target="_blank" class="grid-link">
+              <img src="https://picsum.photos/seed/photo1/800/500.jpg" alt="Photo 1" loading="lazy" />
+            </a>
+          </div>
+          <div class="grid-item">
+            <a href="https://example.com" target="_blank" class="grid-link">
+              <img src="https://picsum.photos/seed/photo2/400/500.jpg" alt="Photo 2" loading="lazy" />
+            </a>
+          </div>
+          <div class="grid-item">
+            <a href="https://example.com" target="_blank" class="grid-link">
+              <img src="https://picsum.photos/seed/photo3/400/400.jpg" alt="Photo 3" loading="lazy" />
+            </a>
+          </div>
+          <div class="grid-item">
+            <a href="https://example.com" target="_blank" class="grid-link">
+              <img src="img/slide1.jpg" alt="Photo 4" loading="lazy" />
+            </a>
+          </div>
+          <div class="grid-item">
+            <a href="https://example.com" target="_blank" class="grid-link">
+              <img src="img/slide2.jpg" alt="Photo 5" loading="lazy" />
+            </a>
+          </div>
+          <div class="grid-item">
+            <a href="https://example.com" target="_blank" class="grid-link">
+              <img src="https://picsum.photos/seed/photo6/450/800.jpg" alt="Photo 6" loading="lazy" />
+            </a>
+          </div>
+        </div>
+      </section>
     </main>
     <div class="toast" id="toast"></div>
     <script src="script.js"></script>

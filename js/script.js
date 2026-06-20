@@ -1,3 +1,53 @@
+(function () {
+  if ("scrollRestoration" in history) {
+    history.scrollRestoration = "manual";
+  }
+
+  const forceScrollTop = () => {
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+  };
+
+  forceScrollTop();
+
+  setTimeout(forceScrollTop, 1);
+  setTimeout(forceScrollTop, 10);
+  setTimeout(forceScrollTop, 50);
+  setTimeout(forceScrollTop, 100);
+  setTimeout(forceScrollTop, 200);
+  setTimeout(forceScrollTop, 500);
+
+  requestAnimationFrame(() => {
+    forceScrollTop();
+    requestAnimationFrame(() => {
+      forceScrollTop();
+      requestAnimationFrame(() => {
+        forceScrollTop();
+      });
+    });
+  });
+
+  let scrollCheckInterval = setInterval(forceScrollTop, 10);
+  setTimeout(() => {
+    clearInterval(scrollCheckInterval);
+  }, 2000);
+  const scrollHandler = () => {
+    if (window.scrollY !== 0) {
+      forceScrollTop();
+    }
+  };
+
+  window.addEventListener("scroll", scrollHandler, { passive: true });
+
+  setTimeout(() => {
+    window.removeEventListener("scroll", scrollHandler);
+  }, 3000);
+  window.addEventListener("beforeunload", () => {
+    sessionStorage.setItem("forceScrollTop", "true");
+  });
+})();
+
 const navbar = document.getElementById("navbar");
 const navLinks = document.querySelectorAll(".nav-link");
 const toast = document.getElementById("toast");
@@ -134,7 +184,6 @@ demoCards.forEach((card, i) => {
   observer.observe(card);
 });
 
-/* === Intersection Observer untuk Animasi Slide About Section === */
 const slideObserver = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
@@ -144,10 +193,9 @@ const slideObserver = new IntersectionObserver(
       }
     });
   },
-  { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
+  { threshold: 0.1, rootMargin: "0px 0px -50px 0px" },
 );
 
 document.querySelectorAll(".grid-item").forEach((item) => {
   slideObserver.observe(item);
 });
-
