@@ -184,18 +184,26 @@ demoCards.forEach((card, i) => {
   observer.observe(card);
 });
 
-const slideObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("visible");
-        slideObserver.unobserve(entry.target);
-      }
-    });
-  },
-  { threshold: 0.1, rootMargin: "0px 0px -50px 0px" },
-);
+const gridItems = document.querySelectorAll(".grid-item");
 
-document.querySelectorAll(".grid-item").forEach((item) => {
-  slideObserver.observe(item);
+const observerOptions = {
+  threshold: 0.15,
+  rootMargin: "0px 0px -80px 0px",
+};
+
+const gridObserver = new IntersectionObserver((entries, observer) => {
+  entries.forEach((entry, index) => {
+    if (entry.isIntersecting) {
+      const el = entry.target;
+
+      el.style.transitionDelay = `${index * 0.08}s`;
+
+      el.classList.add("visible");
+      observer.unobserve(el);
+    }
+  });
+}, observerOptions);
+
+gridItems.forEach((item) => {
+  gridObserver.observe(item);
 });
