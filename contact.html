@@ -1,469 +1,530 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>A. — Contact</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Syne+Mono&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
-<style>
-.page-hero {
-  min-height: 45vh;
-  background: var(--black);
-  display: flex;
-  align-items: flex-end;
-  padding: 0 80px 64px;
-  position: relative;
-  overflow: hidden;
-}
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>A. — Contact</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Syne+Mono&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      .page-hero {
+        min-height: 45vh;
+        background: var(--black);
+        display: flex;
+        align-items: flex-end;
+        padding: 0 80px 64px;
+        position: relative;
+        overflow: hidden;
+      }
 
-.page-hero-label {
-  font-family: 'Syne Mono', monospace;
-  font-size: 0.65rem;
-  letter-spacing: 0.2em;
-  color: var(--yellow);
-  text-transform: uppercase;
-  display: block;
-  margin-bottom: 1rem;
-}
+      .page-hero-label {
+        font-family: "Syne Mono", monospace;
+        font-size: 0.65rem;
+        letter-spacing: 0.2em;
+        color: var(--yellow);
+        text-transform: uppercase;
+        display: block;
+        margin-bottom: 1rem;
+      }
 
-.page-hero-title {
-  font-family: 'Syne', sans-serif;
-  font-weight: 800;
-  font-size: clamp(3.5rem, 8vw, 7rem);
-  letter-spacing: -0.04em;
-  line-height: 1.0;
-  color: var(--white);
-}
+      .page-hero-title {
+        font-family: "Syne", sans-serif;
+        font-weight: 800;
+        font-size: clamp(3.5rem, 8vw, 7rem);
+        letter-spacing: -0.04em;
+        line-height: 1;
+        color: var(--white);
+      }
 
-.page-hero-poly {
-  position: absolute;
-  right: -5%;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 40%;
-  opacity: 0.1;
-  pointer-events: none;
-}
+      .page-hero-poly {
+        position: absolute;
+        right: -5%;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 40%;
+        opacity: 0.1;
+        pointer-events: none;
+      }
 
-.s-exp {
-  background: var(--off-white);
-  padding: 120px 80px;
-}
+      .s-exp {
+        background: var(--off-white);
+        padding: 120px 80px;
+      }
 
-.exp-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  border-top: 1px solid rgba(0,0,0,0.1);
-  margin-top: 4rem;
-}
+      .exp-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+        margin-top: 4rem;
+      }
 
-.exp-row {
-  display: grid;
-  grid-template-columns: 180px 1fr 160px;
-  gap: 3rem;
-  align-items: start;
-  padding: 2.5rem 0;
-  border-bottom: 1px solid rgba(0,0,0,0.1);
-  transition: background 0.2s, padding-left 0.2s;
-  cursor: none;
-}
+      .exp-row {
+        display: grid;
+        grid-template-columns: 180px 1fr 160px;
+        gap: 3rem;
+        align-items: start;
+        padding: 2.5rem 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        transition:
+          background 0.2s,
+          padding-left 0.2s;
+        cursor: none;
+      }
 
-.exp-row:hover { background: rgba(0,0,0,0.02); padding-left: 12px; }
+      .exp-row:hover {
+        background: rgba(0, 0, 0, 0.02);
+        padding-left: 12px;
+      }
 
-.exp-period {
-  font-family: 'Syne Mono', monospace;
-  font-size: 0.7rem;
-  letter-spacing: 0.08em;
-  color: #999;
-  padding-top: 5px;
-}
+      .exp-period {
+        font-family: "Syne Mono", monospace;
+        font-size: 0.7rem;
+        letter-spacing: 0.08em;
+        color: #999;
+        padding-top: 5px;
+      }
 
-.exp-info-company {
-  font-family: 'Syne', sans-serif;
-  font-weight: 800;
-  font-size: 1.3rem;
-  color: var(--black);
-  letter-spacing: -0.02em;
-  margin-bottom: 0.3rem;
-}
+      .exp-info-company {
+        font-family: "Syne", sans-serif;
+        font-weight: 800;
+        font-size: 1.3rem;
+        color: var(--black);
+        letter-spacing: -0.02em;
+        margin-bottom: 0.3rem;
+      }
 
-.exp-info-role {
-  font-size: 0.85rem;
-  color: #777;
-  margin-bottom: 0.75rem;
-}
+      .exp-info-role {
+        font-size: 0.85rem;
+        color: #777;
+        margin-bottom: 0.75rem;
+      }
 
-.exp-info-desc {
-  font-size: 0.82rem;
-  color: #999;
-  line-height: 1.75;
-  max-width: 520px;
-}
+      .exp-info-desc {
+        font-size: 0.82rem;
+        color: #999;
+        line-height: 1.75;
+        max-width: 520px;
+      }
 
-.exp-badge {
-  font-family: 'Syne Mono', monospace;
-  font-size: 0.65rem;
-  letter-spacing: 0.1em;
-  background: var(--yellow);
-  color: var(--black);
-  padding: 5px 12px;
-  border-radius: 100px;
-  display: inline-block;
-  text-transform: uppercase;
-  align-self: center;
-  justify-self: end;
-}
+      .exp-badge {
+        font-family: "Syne Mono", monospace;
+        font-size: 0.65rem;
+        letter-spacing: 0.1em;
+        background: var(--yellow);
+        color: var(--black);
+        padding: 5px 12px;
+        border-radius: 100px;
+        display: inline-block;
+        text-transform: uppercase;
+        align-self: center;
+        justify-self: end;
+      }
 
-.s-achieve {
-  background: var(--black-2);
-  padding: 120px 80px;
-}
+      .s-achieve {
+        background: var(--black-2);
+        padding: 120px 80px;
+      }
 
-.achieve-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2px;
-  margin-top: 4rem;
-}
+      .achieve-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2px;
+        margin-top: 4rem;
+      }
 
-.achieve-card {
-  background: var(--black);
-  border: 1px solid var(--border);
-  padding: 3rem 2.5rem;
-  transition: background 0.3s, border-color 0.3s;
-  cursor: none;
-}
+      .achieve-card {
+        background: var(--black);
+        border: 1px solid var(--border);
+        padding: 3rem 2.5rem;
+        transition:
+          background 0.3s,
+          border-color 0.3s;
+        cursor: none;
+      }
 
-.achieve-card:hover { background: #141414; border-color: var(--yellow); }
-.achieve-card:hover .achieve-num { color: var(--yellow); }
+      .achieve-card:hover {
+        background: #141414;
+        border-color: var(--yellow);
+      }
+      .achieve-card:hover .achieve-num {
+        color: var(--yellow);
+      }
 
-.achieve-num {
-  font-family: 'Syne', sans-serif;
-  font-weight: 800;
-  font-size: clamp(3rem, 5vw, 4.5rem);
-  letter-spacing: -0.04em;
-  color: var(--white);
-  display: block;
-  margin-bottom: 0.5rem;
-  transition: color 0.3s;
-}
+      .achieve-num {
+        font-family: "Syne", sans-serif;
+        font-weight: 800;
+        font-size: clamp(3rem, 5vw, 4.5rem);
+        letter-spacing: -0.04em;
+        color: var(--white);
+        display: block;
+        margin-bottom: 0.5rem;
+        transition: color 0.3s;
+      }
 
-.achieve-label {
-  font-size: 0.85rem;
-  color: var(--gray);
-  line-height: 1.6;
-  max-width: 220px;
-}
+      .achieve-label {
+        font-size: 0.85rem;
+        color: var(--gray);
+        line-height: 1.6;
+        max-width: 220px;
+      }
 
-.s-contact {
-  background: var(--black);
-  padding: 120px 80px 160px;
-  position: relative;
-  overflow: hidden;
-}
+      .s-contact {
+        background: var(--black);
+        padding: 120px 80px 160px;
+        position: relative;
+        overflow: hidden;
+      }
 
-.contact-big {
-  font-family: 'Syne', sans-serif;
-  font-weight: 800;
-  font-size: clamp(2.5rem, 7vw, 6.5rem);
-  letter-spacing: -0.04em;
-  line-height: 1.0;
-  color: var(--white);
-  margin: 3rem 0;
-}
+      .contact-big {
+        font-family: "Syne", sans-serif;
+        font-weight: 800;
+        font-size: clamp(2.5rem, 7vw, 6.5rem);
+        letter-spacing: -0.04em;
+        line-height: 1;
+        color: var(--white);
+        margin: 3rem 0;
+      }
 
-.contact-big .light { font-weight: 300; color: #333; }
+      .contact-big .light {
+        font-weight: 300;
+        color: #333;
+      }
 
-.contact-bottom {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  flex-wrap: wrap;
-  gap: 2rem;
-  margin-top: 4rem;
-  padding-top: 2rem;
-  border-top: 1px solid var(--border);
-}
+      .contact-bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        flex-wrap: wrap;
+        gap: 2rem;
+        margin-top: 4rem;
+        padding-top: 2rem;
+        border-top: 1px solid var(--border);
+      }
 
-.contact-links-list {
-  display: flex;
-  gap: 2rem;
-  flex-wrap: wrap;
-}
+      .contact-links-list {
+        display: flex;
+        gap: 2rem;
+        flex-wrap: wrap;
+      }
 
-.contact-link-item {
-  font-family: 'Syne Mono', monospace;
-  font-size: 0.72rem;
-  letter-spacing: 0.1em;
-  color: var(--gray);
-  text-decoration: none;
-  text-transform: uppercase;
-  transition: color 0.2s;
-  cursor: none;
-}
+      .contact-link-item {
+        font-family: "Syne Mono", monospace;
+        font-size: 0.72rem;
+        letter-spacing: 0.1em;
+        color: var(--gray);
+        text-decoration: none;
+        text-transform: uppercase;
+        transition: color 0.2s;
+        cursor: none;
+      }
 
-.contact-link-item:hover { color: var(--yellow); }
+      .contact-link-item:hover {
+        color: var(--yellow);
+      }
 
-.contact-email {
-  font-family: 'Syne', sans-serif;
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--white);
-  text-decoration: none;
-  transition: color 0.2s;
-  cursor: none;
-}
+      .contact-email {
+        font-family: "Syne", sans-serif;
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--white);
+        text-decoration: none;
+        transition: color 0.2s;
+        cursor: none;
+      }
 
-.contact-email:hover { color: var(--yellow); }
+      .contact-email:hover {
+        color: var(--yellow);
+      }
 
-@media (max-width: 1024px) {
-  .page-hero { padding: 0 40px 50px; }
-  .s-exp { padding: 80px 40px; }
-  .exp-row { grid-template-columns: 140px 1fr; }
-  .exp-badge { display: none; }
-  .achieve-grid { grid-template-columns: repeat(2, 1fr); }
-  .s-achieve { padding: 80px 40px; }
-  .s-contact { padding: 80px 40px 120px; }
-}
-@media (max-width: 768px) {
-  .page-hero { padding: 0 24px 40px; }
-  .s-exp { padding: 60px 24px; }
-  .exp-row { grid-template-columns: 1fr; gap: 0.5rem; }
-  .achieve-grid { grid-template-columns: 1fr; }
-  .s-achieve { padding: 60px 24px; }
-  .s-contact { padding: 60px 24px 100px; }
-  .contact-big { font-size: clamp(2rem, 9vw, 4rem); }
-}
-</style>
-</head>
-<body>
+      @media (max-width: 1024px) {
+        .page-hero {
+          padding: 0 40px 50px;
+        }
+        .s-exp {
+          padding: 80px 40px;
+        }
+        .exp-row {
+          grid-template-columns: 140px 1fr;
+        }
+        .exp-badge {
+          display: none;
+        }
+        .achieve-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .s-achieve {
+          padding: 80px 40px;
+        }
+        .s-contact {
+          padding: 80px 40px 120px;
+        }
+      }
+      @media (max-width: 768px) {
+        .page-hero {
+          padding: 0 24px 40px;
+        }
+        .s-exp {
+          padding: 60px 24px;
+        }
+        .exp-row {
+          grid-template-columns: 1fr;
+          gap: 0.5rem;
+        }
+        .achieve-grid {
+          grid-template-columns: 1fr;
+        }
+        .s-achieve {
+          padding: 60px 24px;
+        }
+        .s-contact {
+          padding: 60px 24px 100px;
+        }
+        .contact-big {
+          font-size: clamp(2rem, 9vw, 4rem);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-ring" id="cursor-ring"></div>
+    <div class="side-stripe"></div>
+    <div class="side-label" id="sideLabel">CONTACT</div>
+    <div class="back-top" id="backTop">
+      <button class="back-top-btn" onclick="scrollToTop()">↑</button>
+      <span class="back-top-text">BACK TO TOP</span>
+    </div>
 
-<div class="cursor" id="cursor"></div>
-<div class="cursor-ring" id="cursor-ring"></div>
-<div class="side-stripe"></div>
-<div class="side-label" id="sideLabel">CONTACT</div>
-<div class="back-top" id="backTop">
-  <button class="back-top-btn" onclick="scrollToTop()">↑</button>
-  <span class="back-top-text">BACK TO TOP</span>
-</div>
-
-<div class="fullscreen-menu" id="fullMenu">
-  <ul class="menu-nav">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="skills.html">Skills</a></li>
-    <li><a href="projects.html">Projects</a></li>
-    <li><a href="contact.html" class="active">Contact</a></li>
-  </ul>
-  <div class="menu-social">
-    <a href="#">Instagram</a>
-    <a href="#">LinkedIn</a>
-    <a href="#">GitHub</a>
-    <a href="#">Dribbble</a>
-  </div>
-</div>
-
-<nav id="mainNav">
-  <a href="index.html" class="nav-logo" id="navLogo">A.</a>
-  <button class="hamburger" id="hamburger" onclick="toggleMenu()">
-    <span></span><span></span><span></span>
-  </button>
-</nav>
-
-<div class="page-hero">
-  <svg class="page-hero-poly" viewBox="0 0 500 500" fill="none">
-    <polygon points="250,20 430,100 470,280 370,430 130,430 30,280 70,100" fill="none" stroke="white" stroke-width="1.2"/>
-    <polygon points="250,80 390,145 420,280 330,390 170,390 80,280 110,145" fill="none" stroke="white" stroke-width="0.8"/>
-  </svg>
-  <div>
-    <span class="page-hero-label">// Let's Connect</span>
-    <h1 class="page-hero-title">Contact<br>& More.</h1>
-  </div>
-</div>
-
-<section class="s-exp" data-theme="light">
-  <span class="s-tag">// Work Experience and Development</span>
-  <h2 class="s-title reveal" style="margin-top:1rem">Career<br>Timeline</h2>
-
-  <div class="exp-list">
-    <div class="exp-row reveal">
-      <div class="exp-period">2022 — Present</div>
-      <div>
-        <div class="exp-info-company">Tokoku Digital</div>
-        <div class="exp-info-role">Senior UI/UX Designer & Frontend Lead</div>
-        <p class="exp-info-desc">Leading a design team of 4, building the company design system, and developing the frontend for an e-commerce platform with 200K+ active users.</p>
+    <div class="fullscreen-menu" id="fullMenu">
+      <ul class="menu-nav">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="skills.html">Skills</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+      </ul>
+      <div class="menu-social">
+        <a href="#">Instagram</a>
+        <a href="#">LinkedIn</a>
+        <a href="#">GitHub</a>
+        <a href="#">Dribbble</a>
       </div>
-      <span class="exp-badge">Current</span>
     </div>
-    <div class="exp-row reveal">
-      <div class="exp-period">2020 — 2022</div>
+
+    <nav id="mainNav">
+      <a href="index.html" class="nav-logo" id="navLogo">A.</a>
+      <button class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+    </nav>
+
+    <div class="page-hero">
+      <svg class="page-hero-poly" viewBox="0 0 500 500" fill="none">
+        <polygon points="250,20 430,100 470,280 370,430 130,430 30,280 70,100" fill="none" stroke="white" stroke-width="1.2" />
+        <polygon points="250,80 390,145 420,280 330,390 170,390 80,280 110,145" fill="none" stroke="white" stroke-width="0.8" />
+      </svg>
       <div>
-        <div class="exp-info-company">Kreasi Studio</div>
-        <div class="exp-info-role">UI/UX & Frontend Developer</div>
-        <p class="exp-info-desc">Worked on various client projects from fintech to healthtech, responsible for the entire pipeline from user research to developer handoff.</p>
+        <span class="page-hero-label">// Let's Connect</span>
+        <h1 class="page-hero-title">Contact<br />& More.</h1>
       </div>
-      <span class="exp-badge">2 Years</span>
     </div>
-    <div class="exp-row reveal">
-      <div class="exp-period">2019 — 2020</div>
-      <div>
-        <div class="exp-info-company">Freelance</div>
-        <div class="exp-info-role">UI Designer & Web Developer</div>
-        <p class="exp-info-desc">Served various SME and local startup clients in designing digital identity and professional websites.</p>
+
+    <section class="s-exp" data-theme="light">
+      <span class="s-tag">// Work Experience and Development</span>
+      <h2 class="s-title reveal" style="margin-top: 1rem">Career<br />Timeline</h2>
+
+      <div class="exp-list">
+        <div class="exp-row reveal">
+          <div class="exp-period">2022 — Present</div>
+          <div>
+            <div class="exp-info-company">Tokoku Digital</div>
+            <div class="exp-info-role">Senior UI/UX Designer & Frontend Lead</div>
+            <p class="exp-info-desc">Leading a design team of 4, building the company design system, and developing the frontend for an e-commerce platform with 200K+ active users.</p>
+          </div>
+          <span class="exp-badge">Current</span>
+        </div>
+        <div class="exp-row reveal">
+          <div class="exp-period">2020 — 2022</div>
+          <div>
+            <div class="exp-info-company">Kreasi Studio</div>
+            <div class="exp-info-role">UI/UX & Frontend Developer</div>
+            <p class="exp-info-desc">Worked on various client projects from fintech to healthtech, responsible for the entire pipeline from user research to developer handoff.</p>
+          </div>
+          <span class="exp-badge">2 Years</span>
+        </div>
+        <div class="exp-row reveal">
+          <div class="exp-period">2019 — 2020</div>
+          <div>
+            <div class="exp-info-company">Freelance</div>
+            <div class="exp-info-role">UI Designer & Web Developer</div>
+            <p class="exp-info-desc">Served various SME and local startup clients in designing digital identity and professional websites.</p>
+          </div>
+          <span class="exp-badge">1 Year</span>
+        </div>
+        <div class="exp-row reveal">
+          <div class="exp-period">2015 — 2019</div>
+          <div>
+            <div class="exp-info-company">Universitas Indonesia</div>
+            <div class="exp-info-role">Bachelor of Computer Science</div>
+            <p class="exp-info-desc">Focused on Human-Computer Interaction (HCI) and software engineering. Thesis on mobile app accessibility evaluation in Indonesia.</p>
+          </div>
+          <span class="exp-badge">Education</span>
+        </div>
       </div>
-      <span class="exp-badge">1 Year</span>
-    </div>
-    <div class="exp-row reveal">
-      <div class="exp-period">2015 — 2019</div>
-      <div>
-        <div class="exp-info-company">Universitas Indonesia</div>
-        <div class="exp-info-role">Bachelor of Computer Science</div>
-        <p class="exp-info-desc">Focused on Human-Computer Interaction (HCI) and software engineering. Thesis on mobile app accessibility evaluation in Indonesia.</p>
+    </section>
+
+    <section class="s-achieve" data-theme="dark">
+      <span class="s-tag" style="color: rgba(240, 165, 0, 0.7)">// Achievements</span>
+      <h2 class="s-title reveal" style="color: var(--white); margin-top: 1rem">Numbers<br />That Matter</h2>
+
+      <div class="achieve-grid">
+        <div class="achieve-card reveal">
+          <span class="achieve-num">32+</span>
+          <p class="achieve-label">Projects completed across fintech, edtech, healthtech, and e-commerce</p>
+        </div>
+        <div class="achieve-card reveal" style="transition-delay: 0.1s">
+          <span class="achieve-num">18+</span>
+          <p class="achieve-label">Satisfied clients from Indonesia and Southeast Asia</p>
+        </div>
+        <div class="achieve-card reveal" style="transition-delay: 0.2s">
+          <span class="achieve-num">5+</span>
+          <p class="achieve-label">Years of professional experience in design and development</p>
+        </div>
+        <div class="achieve-card reveal" style="transition-delay: 0.05s">
+          <span class="achieve-num">120+</span>
+          <p class="achieve-label">Design system components built and documented for teams</p>
+        </div>
+        <div class="achieve-card reveal" style="transition-delay: 0.15s">
+          <span class="achieve-num">3×</span>
+          <p class="achieve-label">Design award finalist at national UI/UX competitions</p>
+        </div>
+        <div class="achieve-card reveal" style="transition-delay: 0.25s">
+          <span class="achieve-num">200K+</span>
+          <p class="achieve-label">Active users on products I've designed and built</p>
+        </div>
       </div>
-      <span class="exp-badge">Education</span>
-    </div>
-  </div>
-</section>
+    </section>
 
-<section class="s-achieve" data-theme="dark">
-  <span class="s-tag" style="color:rgba(240,165,0,0.7)">// Achievements</span>
-  <h2 class="s-title reveal" style="color:var(--white);margin-top:1rem">Numbers<br>That Matter</h2>
+    <section class="s-contact" data-theme="dark">
+      <span class="s-tag" style="color: rgba(240, 165, 0, 0.7)">// Let's Connect</span>
 
-  <div class="achieve-grid">
-    <div class="achieve-card reveal">
-      <span class="achieve-num">32+</span>
-      <p class="achieve-label">Projects completed across fintech, edtech, healthtech, and e-commerce</p>
-    </div>
-    <div class="achieve-card reveal" style="transition-delay:0.1s">
-      <span class="achieve-num">18+</span>
-      <p class="achieve-label">Satisfied clients from Indonesia and Southeast Asia</p>
-    </div>
-    <div class="achieve-card reveal" style="transition-delay:0.2s">
-      <span class="achieve-num">5+</span>
-      <p class="achieve-label">Years of professional experience in design and development</p>
-    </div>
-    <div class="achieve-card reveal" style="transition-delay:0.05s">
-      <span class="achieve-num">120+</span>
-      <p class="achieve-label">Design system components built and documented for teams</p>
-    </div>
-    <div class="achieve-card reveal" style="transition-delay:0.15s">
-      <span class="achieve-num">3×</span>
-      <p class="achieve-label">Design award finalist at national UI/UX competitions</p>
-    </div>
-    <div class="achieve-card reveal" style="transition-delay:0.25s">
-      <span class="achieve-num">200K+</span>
-      <p class="achieve-label">Active users on products I've designed and built</p>
-    </div>
-  </div>
-</section>
+      <h2 class="contact-big reveal">
+        Have a project<br />
+        <span class="light">in mind? </span>Let's<br />
+        <strong>work together.</strong>
+      </h2>
 
-<section class="s-contact" data-theme="dark">
-  <span class="s-tag" style="color:rgba(240,165,0,0.7)">// Let's Connect</span>
+      <div class="reveal" style="transition-delay: 0.1s">
+        <a href="mailto:arya@example.com" class="btn-pill" style="display: inline-flex">
+          SEND EMAIL
+          <span class="arrow-circle">→</span>
+        </a>
+      </div>
 
-  <h2 class="contact-big reveal">
-    Have a project<br>
-    <span class="light">in mind? </span>Let's<br>
-    <strong>work together.</strong>
-  </h2>
+      <div class="contact-bottom reveal" style="transition-delay: 0.2s">
+        <div class="contact-links-list">
+          <a href="#" class="contact-link-item">Instagram</a>
+          <a href="#" class="contact-link-item">LinkedIn</a>
+          <a href="#" class="contact-link-item">GitHub</a>
+          <a href="#" class="contact-link-item">Dribbble</a>
+        </div>
+        <a href="mailto:arya@example.com" class="contact-email">arya@example.com</a>
+      </div>
+    </section>
 
-  <div class="reveal" style="transition-delay:0.1s">
-    <a href="mailto:arya@example.com" class="btn-pill" style="display:inline-flex">
-      SEND EMAIL
-      <span class="arrow-circle">→</span>
-    </a>
-  </div>
+    <footer>
+      <p>© 2025 Arya Pratama</p>
+      <p>UI/UX Designer & Frontend Developer</p>
+      <a href="index.html">← Back to Home</a>
+    </footer>
 
-  <div class="contact-bottom reveal" style="transition-delay:0.2s">
-    <div class="contact-links-list">
-      <a href="#" class="contact-link-item">Instagram</a>
-      <a href="#" class="contact-link-item">LinkedIn</a>
-      <a href="#" class="contact-link-item">GitHub</a>
-      <a href="#" class="contact-link-item">Dribbble</a>
-    </div>
-    <a href="mailto:arya@example.com" class="contact-email">arya@example.com</a>
-  </div>
-</section>
+    <script>
+      const cursor = document.getElementById("cursor");
+      const ring = document.getElementById("cursor-ring");
+      let mx = 0,
+        my = 0,
+        rx = 0,
+        ry = 0;
 
-<footer>
-  <p>© 2025 Arya Pratama</p>
-  <p>UI/UX Designer & Frontend Developer</p>
-  <a href="index.html">← Back to Home</a>
-</footer>
+      document.addEventListener("mousemove", (e) => {
+        mx = e.clientX;
+        my = e.clientY;
+        cursor.style.left = mx + "px";
+        cursor.style.top = my + "px";
+      });
 
-<script>
-const cursor = document.getElementById('cursor');
-const ring = document.getElementById('cursor-ring');
-let mx = 0, my = 0, rx = 0, ry = 0;
+      function animateRing() {
+        rx += (mx - rx) * 0.12;
+        ry += (my - ry) * 0.12;
+        ring.style.left = rx + "px";
+        ring.style.top = ry + "px";
+        requestAnimationFrame(animateRing);
+      }
+      animateRing();
 
-document.addEventListener('mousemove', e => {
-  mx = e.clientX; my = e.clientY;
-  cursor.style.left = mx + 'px';
-  cursor.style.top = my + 'px';
-});
+      document.querySelectorAll("a, button, .achieve-card, .exp-row").forEach((el) => {
+        el.addEventListener("mouseenter", () => {
+          cursor.style.width = "18px";
+          cursor.style.height = "18px";
+          ring.style.width = "52px";
+          ring.style.height = "52px";
+          ring.style.borderColor = "rgba(240,165,0,0.8)";
+        });
+        el.addEventListener("mouseleave", () => {
+          cursor.style.width = "10px";
+          cursor.style.height = "10px";
+          ring.style.width = "36px";
+          ring.style.height = "36px";
+          ring.style.borderColor = "rgba(240,165,0,0.5)";
+        });
+      });
 
-function animateRing() {
-  rx += (mx - rx) * 0.12;
-  ry += (my - ry) * 0.12;
-  ring.style.left = rx + 'px';
-  ring.style.top = ry + 'px';
-  requestAnimationFrame(animateRing);
-}
-animateRing();
+      const navLogo = document.getElementById("navLogo");
+      const hamburgerBtn = document.getElementById("hamburger");
+      const lightSection = document.querySelector('[data-theme="light"]');
+      const obs = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              navLogo.classList.add("dark");
+              hamburgerBtn.classList.add("dark");
+            } else {
+              navLogo.classList.remove("dark");
+              hamburgerBtn.classList.remove("dark");
+            }
+          });
+        },
+        { threshold: 0.3 },
+      );
+      if (lightSection) obs.observe(lightSection);
 
-document.querySelectorAll('a, button, .achieve-card, .exp-row').forEach(el => {
-  el.addEventListener('mouseenter', () => {
-    cursor.style.width = '18px'; cursor.style.height = '18px';
-    ring.style.width = '52px'; ring.style.height = '52px';
-    ring.style.borderColor = 'rgba(240,165,0,0.8)';
-  });
-  el.addEventListener('mouseleave', () => {
-    cursor.style.width = '10px'; cursor.style.height = '10px';
-    ring.style.width = '36px'; ring.style.height = '36px';
-    ring.style.borderColor = 'rgba(240,165,0,0.5)';
-  });
-});
+      let menuOpen = false;
+      function toggleMenu() {
+        menuOpen = !menuOpen;
+        document.getElementById("fullMenu").classList.toggle("open", menuOpen);
+        hamburgerBtn.classList.toggle("open", menuOpen);
+      }
 
-const navLogo = document.getElementById('navLogo');
-const hamburgerBtn = document.getElementById('hamburger');
-const lightSection = document.querySelector('[data-theme="light"]');
-const obs = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      navLogo.classList.add('dark');
-      hamburgerBtn.classList.add('dark');
-    } else {
-      navLogo.classList.remove('dark');
-      hamburgerBtn.classList.remove('dark');
-    }
-  });
-}, { threshold: 0.3 });
-if (lightSection) obs.observe(lightSection);
+      const backTop = document.getElementById("backTop");
+      window.addEventListener("scroll", () => {
+        backTop.classList.toggle("visible", window.scrollY > 400);
+      });
+      function scrollToTop() {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
 
-let menuOpen = false;
-function toggleMenu() {
-  menuOpen = !menuOpen;
-  document.getElementById('fullMenu').classList.toggle('open', menuOpen);
-  hamburgerBtn.classList.toggle('open', menuOpen);
-}
-
-const backTop = document.getElementById('backTop');
-window.addEventListener('scroll', () => {
-  backTop.classList.toggle('visible', window.scrollY > 400);
-});
-function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
-
-const revealObserver = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      revealObserver.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.12 });
-document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-</script>
-</body>
+      const revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              revealObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.12 },
+      );
+      document.querySelectorAll(".reveal").forEach((el) => revealObserver.observe(el));
+    </script>
+  </body>
 </html>
